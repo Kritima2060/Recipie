@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+  </head>
+  <body>
+  
+    <div id="nav" class="w-full h-20 mb-2">
+      <div class="flex justify-between w-full sticky top-0 items-center border-b-2 border-black h-20 ">
+        <button class="text-white" id="home" > RECI-  PIE </button>
+        <div><button class="w-100 rounded-4xl"> Search </button></div>
+        <div class="flex gap-8"><img class="h-7" src="/fav.svg" alt="Favourite" id="viewFav" style="cursor: pointer;"/>
+        <img class="h-7" src="/add.svg" alt="Add"/></div>
+      </div>
+    
+      
+
+    </div>
+    <div id="app" class="w-full h-50 flex flex-row gap-4 flex-wrap"></div>
+
+    <script type="module" src="./src/fav.js"></script>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
+
+
+<!-- <div id="app" class="w-full h-500 flex flex-wrap gap-6">
+    
+    <h1 class="flex w-full text-black">Easy to Make</h1>
+  </div> -->
