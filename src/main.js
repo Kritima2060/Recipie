@@ -4,12 +4,21 @@ import { getAlldata } from './recipes.js'
 
 
 //import { setupCounter } from './counter.js'
-async function displayItems(){
+export async function displayItems(){
   let recipes= await getAlldata();
-  //console.log(recipes[20]);
   recipes.forEach(recipe => {
     
-    
+    let idsStored = JSON.parse(localStorage.getItem("favorites")) || [];
+    console.log(idsStored);
+    let ImgSrc= "";
+    if(idsStored.includes(recipe.id.toString())){
+      console.log("it has")
+      ImgSrc="colorheart.svg"
+    }
+    else{
+      console.log("no")
+      ImgSrc="fav.svg"
+    }
     document.querySelector('#app').innerHTML += `
     <div class="h-50 w-50 flex flex-col border-2 border-black rounded-2xl">
     <div class="w-full h-[70%] border-b-1 border-black overflow-hidden">
@@ -19,7 +28,7 @@ async function displayItems(){
     <div>
     <h2 class="line-clamp-1 text-black"> ${recipe.name}</h2>
     </div>
-    <img src="fav.svg"  data-id="${recipe.id}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
+    <img src="${ImgSrc}"  data-id="${recipe.id}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
     </div> 
     </div>
     </div>
@@ -35,7 +44,6 @@ async function displayItems(){
     
       if (idsStored.includes(id)) {
         idsStored = idsStored.filter(x =>x  !== id);
-        console.log("hi")
         icon.src = 'fav.svg';
 
       } else {
@@ -43,6 +51,7 @@ async function displayItems(){
         icon.src = 'colorheart.svg';
       }
       localStorage.setItem("favorites", JSON.stringify(idsStored));
+      // console.log(localStorage)
       
     });
   })
