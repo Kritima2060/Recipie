@@ -26,7 +26,7 @@ export async function displayItems(){
     <div>
     <h2 class="line-clamp-1 text-black cursor-pointer  recipeFollows" data-id="${recipe.id}"> ${recipe.name}</h2>
     </div>
-    <img src="${ImgSrc}" id="closestImage" data-id="${recipe.id}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
+    <img src="${ImgSrc}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
     </div> 
     </div>
     </div>

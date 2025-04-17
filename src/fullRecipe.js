@@ -6,9 +6,16 @@ async function displayfullRecipes(){
     let allData= await getAlldata();
     // const selectedIds =JSON.stringify(Ids);
     const params = new URLSearchParams(window.location.search)
-    const selectedIds = params.get("id")
+    const selectedId = params.get("id")
+    console.log(selectedId)
     // console.log(selectedIds)
-    const selectedRecipes = allData.find(recipe => selectedIds.includes(String(recipe.id)));
+    
+  const selectedRecipes = allData.find(recipe => recipe.id.toString() === selectedId);
+
+  if (selectedRecipes) {
+
+     
+    // const selectedRecipes = allData.find(recipe => selectedIds.includes((recipe.id)));
         
          document.querySelector("#app").innerHTML = `
          <div class="flex fullRecipes">
@@ -38,4 +45,5 @@ document.getElementById("viewFav").addEventListener("click", () => {
   document.getElementById("home").addEventListener("click", () => {
     window.location.href = "/index.html";
   });
+}
   displayfullRecipes();
