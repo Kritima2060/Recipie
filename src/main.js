@@ -35,14 +35,11 @@ export async function displayItems(){
     `
    document.querySelectorAll(".recipeFollows").forEach(recipeFollow => {
     recipeFollow.addEventListener("click",() =>{
-      // console.log("hello")
-      // window.location.href = "/fullRecipe.html";
-      // const selectedId= recipeFollow.closest(".recipeFollows");
       const id = recipeFollow.getAttribute('data-id');
       console.log(id)
-      localStorage.setItem("selectedRecipeId", JSON.stringify(id))
-     const x= JSON.parse(localStorage.getItem("selectedRecipeId"))|| []
-     console.log(x)
+      window.location.href=(`fullRecipe.html?id=${id}`)
+
+     
    });
    });
   
