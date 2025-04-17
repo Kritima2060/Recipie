@@ -16,11 +16,16 @@ async function displayFavorites() {
   </div>
   <div class="flex flex-row p-4 gap-2 justify-between">
     <div>
-      <h2 class="line-clamp-1 text-black"> ${recipe.name}</h2>
+     <h2 class="line-clamp-1 text-black cursor-pointer recipeFollows"> ${recipe.name}</h2>
     </div>
     <img src="colorheart.svg"  data-id="${recipe.id}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
   </div>
   `;
+  document.querySelectorAll(".recipeFollows").forEach(recipeFollow => {
+    recipeFollow.addEventListener("click",() =>{
+      window.location.href = "/fullRecipe.html";
+   });
+   });
 
   });
   document.querySelectorAll('.Fav-Icon').forEach(icon => {
@@ -43,8 +48,6 @@ async function displayFavorites() {
         icon.src = 'colorheart.svg';
       }
       localStorage.setItem("favorites", JSON.stringify(favIds));
-      console.log(localStorage);
-      // console.log(localStorage)
       
     });
   })

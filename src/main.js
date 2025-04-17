@@ -9,14 +9,12 @@ export async function displayItems(){
   recipes.forEach(recipe => {
     
     let idsStored = JSON.parse(localStorage.getItem("favorites")) || [];
-    console.log(idsStored);
+    // console.log(idsStored);
     let ImgSrc= "";
     if(idsStored.includes(recipe.id.toString())){
-      console.log("it has")
       ImgSrc="colorheart.svg"
     }
     else{
-      console.log("no")
       ImgSrc="fav.svg"
     }
     document.querySelector('#app').innerHTML += `
@@ -26,15 +24,28 @@ export async function displayItems(){
     </div>
     <div class="flex flex-row p-4 gap-2 justify-between">
     <div>
-    <h2 class="line-clamp-1 text-black"> ${recipe.name}</h2>
+    <h2 class="line-clamp-1 text-black cursor-pointer  recipeFollows" data-id="${recipe.id}"> ${recipe.name}</h2>
     </div>
-    <img src="${ImgSrc}"  data-id="${recipe.id}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
+    <img src="${ImgSrc}" id="closestImage" data-id="${recipe.id}" class="h-5  cursor-pointer Fav-Icon  justify-self-end">
     </div> 
     </div>
     </div>
     
     
     `
+   document.querySelectorAll(".recipeFollows").forEach(recipeFollow => {
+    recipeFollow.addEventListener("click",() =>{
+      // console.log("hello")
+      // window.location.href = "/fullRecipe.html";
+      // const selectedId= recipeFollow.closest(".recipeFollows");
+      const id = recipeFollow.getAttribute('data-id');
+      console.log(id)
+      localStorage.setItem("selectedRecipeId", JSON.stringify(id))
+     const x= JSON.parse(localStorage.getItem("selectedRecipeId"))|| []
+     console.log(x)
+   });
+   });
+  
   });
   
   document.querySelectorAll('.Fav-Icon').forEach(icon => {
@@ -51,18 +62,19 @@ export async function displayItems(){
         icon.src = 'colorheart.svg';
       }
       localStorage.setItem("favorites", JSON.stringify(idsStored));
+
+  
       // console.log(localStorage)
       
     });
   })
   
   }
-  document.getElementById("home").addEventListener("click",()=>{
-    window.location.href = "/";
-  });
+
   document.getElementById("viewFav").addEventListener("click", () => {
     window.location.href = "/fav.html";
   });
+  
   
   displayItems();
   
