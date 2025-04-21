@@ -4,11 +4,8 @@ import "./style.css";
 
 async function displayfullRecipes(){
     let allData= await getAlldata();
-    // const selectedIds =JSON.stringify(Ids);
     const params = new URLSearchParams(window.location.search)
     const selectedId = params.get("id")
-    console.log(selectedId)
-    // console.log(selectedIds)
     
   const selectedRecipes = allData.find(recipe => recipe.id.toString() === selectedId);
 
