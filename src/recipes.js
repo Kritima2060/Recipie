@@ -16,5 +16,6 @@ export async function getAlldata(recipes) {
         return[];
     }
 }
+
 // getAlldata();
 
